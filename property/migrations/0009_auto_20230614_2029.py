@@ -2,7 +2,6 @@
 import phonenumbers
 
 from django.db import migrations
-from django.db.models import Q
 
 
 def fill_pure_number(apps, schema_editor):
