@@ -7,7 +7,7 @@ from django.db import migrations
 def fill_pure_number(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     flats = Flat.objects.all()
-    for flat in flats:
+    for flat in flats.iterator():
         phonenumber = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(phonenumber):
             formatted_phonenumber = phonenumbers.format_number(

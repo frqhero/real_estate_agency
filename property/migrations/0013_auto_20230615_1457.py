@@ -7,7 +7,7 @@ def fill_ownership_relations(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
     flats = Flat.objects.all()
-    for flat in flats:
+    for flat in flats.iterator():
         owner, status = Owner.objects.get_or_create(
             owner=flat.owner,
             owners_phonenumber=flat.owners_phonenumber,
